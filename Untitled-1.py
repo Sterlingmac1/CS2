@@ -1,0 +1,175 @@
+
+
+def reverse_string(name):
+    '''
+    Description: takes the users words and prints the reverse
+    Args: 
+    name (str): word or phrase
+    returns:
+    str:name reversed
+    '''
+    return name[::-1]
+
+def count_vowels(name):
+    '''
+    Takes a string and returns the number of vowels in it
+    Args:
+        n
+    Returns:
+        the number of vowels in a sentence
+    ''' 
+    vowels = ['a','i','u','o','e']
+    num_vowels = 0
+    
+    for char in name:
+        if char in vowels:
+            num_vowels += 1 
+    return num_vowels
+
+def count_consonants(name):
+    '''
+    Takes a string and returns the number of vowels in it
+    Args:
+        n
+    Returns:
+        the number of vowels in a sentence
+    ''' 
+    consonants = ['b','c','d','f','g']
+    num_consonants  = 0
+    
+    for char in name:
+        if char in consonants:
+            num_consonants += 1 
+    return num_consonants
+
+def get_names(name):
+        names = name.split(" ")
+        return names
+
+def first_name(name):
+    names = get_names(name)
+    return names[0]
+
+def last_name(name):
+    names = get_names(name)
+    return names[-1]
+
+def middle_name(name):
+    names = get_names(name)
+    return names[1]
+
+def contains_hyphen(name):
+    """
+    Checks if a given last name string contains a hyphen
+
+    Args:
+        last_name: The string representing the last name
+
+    Returns:
+        True if the last name contains a hyphen, False otherwise
+    """
+    return "-" in last_name(name)
+
+def is_palindrome(name):
+    '''
+    Takes a string and checks whether  it is a palidrome
+    Args:
+        name check(str): checks if name is palindrome
+    Returns:
+        if string is paladrome :
+    '''
+    return name == reverse_string(name)
+
+def lower(name): 
+    '''
+    takes a letter and changes it from uppercase to lowercase
+    args:
+    Change upercase letter(str): change a letter to lowercase 
+    returns:
+        lowercase letter
+    '''
+    name_out= ""
+    for letter in name:
+        if ord(letter)>64 and ord(letter)<91:                   
+            num=ord(letter)                                     
+            num=num+32                                          
+            letter= chr(num)                                    
+            name_out = name_out +  letter                       
+        else:
+            name_out = name_out +  letter                       
+    name = name_out
+    return name
+
+def upper(name): 
+    '''
+    takes a letter and changes it from uppercase to lowercase
+    args:
+    Change upercase letter(str): change a letter to lowercase 
+    returns:
+        lowercase letter
+    '''
+    name_out= ""
+    for letter in name:
+        if ord(letter)>96 and ord(letter)<123:                   
+            num=ord(letter)                                     
+            num=num-32                                          
+            letter= chr(num)                                    
+            name_out = name_out +  letter                       
+        else:
+            name_out = name_out +  letter                       
+    name = name_out
+    return name
+
+def initials(name):
+    names = name.split(" ")
+    initials = ''
+    for n in names: 
+        initials += n[0]
+    return initials
+        
+def main():
+    word = input("Please enter your name or word")
+    while True:
+        
+        option = input('''
+                    What would you like to do?
+                    1. Reverse and display your name
+                    2. Count vowels in name
+                    3. Check if name contains hyphen
+                    4. Check if there is a palidrome
+                    5. Get initials from name
+                    6. count consonants
+                    7. get first name
+                    8. get middle name
+                    9. get last name
+                    10. make upper
+                    11. make lower
+                    12. Exit
+                        ''')
+        if option == "1":
+            print(reverse_string(word))
+        elif option == "2": 
+            print(count_vowels(word))
+        elif option == "3":
+            print(contains_hyphen(word))
+        elif option == "4":
+            print(is_palindrome(word))
+        elif option == "5":
+            print(initials(word))
+        elif option == "6":
+            print(count_consonants(word))
+        elif option == "7":
+            print(first_name(word))
+        elif option == "8":
+            print(middle_name(word))
+        elif option == "9":
+            print(last_name(word))
+        elif option == "10":
+            print(upper(word))
+        elif option == "11":
+            print(lower(word))
+        elif option == "12":   
+            break
+        else: 
+            print("Invalid response")
+main()
